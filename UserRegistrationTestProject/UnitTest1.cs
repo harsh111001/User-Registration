@@ -2,6 +2,7 @@ using UserRegistrationRegex;
 
 namespace UserRegistrationTestProject
 {
+    //both uc10 and uc11 
     [TestClass]
     public class UnitTest1
     {
