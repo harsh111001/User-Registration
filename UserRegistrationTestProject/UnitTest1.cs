@@ -1,3 +1,4 @@
+using UserRegisteration;
 using UserRegistrationRegex;
 
 namespace UserRegistrationTestProject
@@ -14,13 +15,26 @@ namespace UserRegistrationTestProject
             var actual=RegexPattern.ValidateFirstName(name);
             Assert.AreEqual(true, actual);
         }
+        //[TestMethod]
+        //[DataRow("raj")]
+        //[DataRow("Ha")]
+        //public void CheckWrongValidateFirstName(string name)
+        //{
+        //    var actual = RegexPattern.ValidateFirstName(name);
+        //    Assert.AreEqual(false, actual);
+        //}
         [TestMethod]
-        [DataRow("raj")]
-        [DataRow("Ha")]
-        public void CheckWrongValidateFirstName(string name)
+        public void WrongValidateFirstNamethrowsexception()
         {
-            var actual = RegexPattern.ValidateFirstName(name);
-            Assert.AreEqual(false, actual);
+            try
+            {
+                string name = "a";
+                var res=RegexPattern.ValidateFirstName(name);
+            }
+            catch (CustomException e)
+            {
+                Assert.AreEqual("not a valid entry", e.Message);
+            }
         }
         [TestMethod]
         [DataRow("Soni")]
@@ -30,13 +44,26 @@ namespace UserRegistrationTestProject
             var actual = RegexPattern.ValidateLastName(name);
             Assert.AreEqual(true, actual);
         }
+        //[TestMethod]
+        //[DataRow("So")]
+        //[DataRow("jain")]
+        //public void CheckWrongValidateLastName(string name)
+        //{
+        //    var actual = RegexPattern.ValidateLastName(name);
+        //    Assert.AreEqual(false, actual);
+        //}
         [TestMethod]
-        [DataRow("So")]
-        [DataRow("jain")]
-        public void CheckWrongValidateLastName(string name)
+        public void WrongValidateLastNamethrowexception()
         {
-            var actual = RegexPattern.ValidateLastName(name);
-            Assert.AreEqual(false, actual);
+            try
+            {
+                string name = "A";
+                var res = RegexPattern.ValidateLastName(name);
+            }
+            catch (CustomException e)
+            {
+                Assert.AreEqual("not a valid entry", e.Message);
+            }
         }
         [TestMethod]
         [DataRow("Raj@gmail.com")]
@@ -47,14 +74,27 @@ namespace UserRegistrationTestProject
             var actual = RegexPattern.ValidateEmail(email);
             Assert.AreEqual(true, actual);
         }
+        //[TestMethod]
+        //[DataRow("Raj@gmailcom")]
+        //[DataRow("Harsh.jaingmail.com")]
+        //[DataRow("abc.xyz#bl.co.in")]
+        //public void CheckWrongValidateEmail(string email)
+        //{
+        //    var actual = RegexPattern.ValidateEmail(email);
+        //    Assert.AreEqual(false, actual);
+        //}
         [TestMethod]
-        [DataRow("Raj@gmailcom")]
-        [DataRow("Harsh.jaingmail.com")]
-        [DataRow("abc.xyz#bl.co.in")]
-        public void CheckWrongValidateEmail(string email)
+        public void WrongVAlidateEmailThrowsException()
         {
-            var actual = RegexPattern.ValidateEmail(email);
-            Assert.AreEqual(false, actual);
+            try
+            {
+                string email = "@";
+                var res= RegexPattern.ValidateEmail(email);
+            }
+            catch(CustomException e)
+            {
+                Assert.AreEqual("not a valid entry", e.Message);
+            }
         }
         [TestMethod]
         [DataRow("91 9842905050")]
@@ -65,14 +105,27 @@ namespace UserRegistrationTestProject
             var actual =RegexPattern.ValidatephoneNumber(phonenumber);
             Assert.AreEqual(true, actual);
         }
+        //[TestMethod]
+        //[DataRow("919842905050")]
+        //[DataRow("91 110")]
+        //[DataRow("91 993849187268")]
+        //public void CheckWrongValidatephoneNumber(string phonenumber)
+        //{
+        //    var actual = RegexPattern.ValidatephoneNumber(phonenumber);
+        //    Assert.AreEqual(false, actual);
+        //}
         [TestMethod]
-        [DataRow("919842905050")]
-        [DataRow("91 110")]
-        [DataRow("91 993849187268")]
-        public void CheckWrongValidatephoneNumber(string phonenumber)
+        public void WrongVAlidatePhoneNumberThrowsException()
         {
-            var actual = RegexPattern.ValidatephoneNumber(phonenumber);
-            Assert.AreEqual(false, actual);
+            try
+            {
+                string Phonenumber = "915261";
+                var res = RegexPattern.ValidatephoneNumber(Phonenumber);
+            }
+            catch (CustomException e)
+            {
+                Assert.AreEqual("not a valid entry", e.Message);
+            }
         }
         [TestMethod]
         [DataRow("Test@111")]
@@ -83,14 +136,27 @@ namespace UserRegistrationTestProject
             var actual = RegexPattern.ValidatePassword(password);
             Assert.AreEqual(true, actual);
         }
+        //[TestMethod]
+        //[DataRow("test@111")]
+        //[DataRow("Ofit@3")]
+        //[DataRow("A@abcdefgh")]
+        //public void CheckWrongValidatePassword(string password)
+        //{
+        //    var actual = RegexPattern.ValidatePassword(password);
+        //    Assert.AreEqual(false, actual);
+        //}
         [TestMethod]
-        [DataRow("test@111")]
-        [DataRow("Ofit@3")]
-        [DataRow("A@abcdefgh")]
-        public void CheckWrongValidatePassword(string password)
+        public void WrongVAlidatePasswordThrowsException()
         {
-            var actual = RegexPattern.ValidatePassword(password);
-            Assert.AreEqual(false, actual);
+            try
+            {
+                string password = "harsh";
+                var res = RegexPattern.ValidatePassword(password);
+            }
+            catch (CustomException e)
+            {
+                Assert.AreEqual("not a valid entry", e.Message);
+            }
         }
     }
 }

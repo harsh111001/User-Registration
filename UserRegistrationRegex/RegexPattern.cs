@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Linq.Expressions;
+using UserRegisteration;
 
 namespace UserRegistrationRegex
 {
@@ -16,23 +18,68 @@ namespace UserRegistrationRegex
         public static string PasswordPattern = "^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
         public static bool ValidateFirstName(string firstName)
         {
-            return Regex.IsMatch(firstName, FirstNamePattern);
+            bool res= Regex.IsMatch(firstName, FirstNamePattern);
+            if (!res) 
+            {
+                throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "not a valid entry");
+            }
+            else
+            {
+                return true;
+            }
+            //return Regex.IsMatch(firstName, FirstNamePattern);
         }
         public static bool ValidateLastName(string lastName)
         {
-            return Regex.IsMatch(lastName, LastNamePattern);
+            bool res = Regex.IsMatch(lastName, LastNamePattern);
+            if (!res)
+            {
+                throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "not a valid entry");
+            }
+            else
+            {
+                return true;
+            }
+            //return Regex.IsMatch(lastName, LastNamePattern);
         }
         public static bool ValidateEmail(string email)
         {
-            return Regex.IsMatch(email, EmailPattern);
+            bool res = Regex.IsMatch(email, EmailPattern);
+            if (!res)
+            {
+                throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "not a valid entry");
+            }
+            else
+            {
+                return true;
+            }
+            //return Regex.IsMatch(email, EmailPattern);
         }
         public static bool ValidatephoneNumber(string phoneNumber)
         {
-            return Regex.IsMatch(phoneNumber, PhoneNumberPattern);
+            bool res = Regex.IsMatch(phoneNumber, PhoneNumberPattern);
+            if (!res)
+            {
+                throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "not a valid entry");
+            }
+            else
+            {
+                return true;
+            }
+            //return Regex.IsMatch(phoneNumber, PhoneNumberPattern);
         }
         public static bool ValidatePassword(string password)
         {
-            return Regex.IsMatch(password, PasswordPattern);
+            bool res = Regex.IsMatch(password, PasswordPattern);
+            if (!res)
+            {
+                throw new CustomException(CustomException.ExceptionType.INVALID_MESSAGE, "not a valid entry");
+            }
+            else
+            {
+                return true;
+            }
+            //return Regex.IsMatch(password, PasswordPattern);
         }
     }
 }
